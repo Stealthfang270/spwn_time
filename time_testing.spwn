@@ -1,7 +1,0 @@
-time_triggers = import "time_triggers.spwn";
-extract time_triggers;
-
-time()
-time_event()
-time_control()
-time_warp(1)
