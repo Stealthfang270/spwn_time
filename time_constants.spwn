@@ -2,12 +2,12 @@ property = (id: @number, pat: @pattern | @type_indicator, name: @string) {
     return @object_key::{id, pattern: pat, name}
 } //This piece of code is lended from labrosggv's camera library
 
-return 
-{
-    time_props: 
+return {
+    time_props:
     {
         START_TIME: property(467, @number, "START_TIME"),
         STOP_TIME: property(473, @number, "STOP_TIME"),
+        TARGET_TIME: property(473, @number, "TARGET_TIME"), //Target time and stop time share the same ID
         ITEM_ID: property(80, @number | @item, "ITEM_ID"),
         TARGET_ID: property(51, @group, "TARGET_ID"),
         TIME_MOD: property(470, @number, "TIME_MOD"),

@@ -1,14 +1,13 @@
 constants = import "time_constants.spwn";
-extract constants;
 extract obj_props;
+extract constants;
 extract time_props;
 
-return 
-{
-    time: #[desc("An implementation of the time trigger"), example("PLACEHOLDER TEXT")]
+return {
+    time: #[desc("An implementation of the time trigger"), example("time(0,5)")]
     (
-        #[desc("Start Time (Seconds)")] start_time: @number,
-        #[desc("Stop Time (Seconds)")] stop_time: @number,
+        #[desc("Start Time (Seconds)")] start_time: @number = 0,
+        #[desc("Stop Time (Seconds)")] stop_time: @number = 0,
         #[desc("Timer Modifier")] time_mod: @number = 1,
         #[desc("Item ID")] item_id: @item | @number = 0,
         #[desc("Target")] target: @group = 0g,
@@ -16,10 +15,7 @@ return
         #[desc("Start Paused")] start_paused: @bool = false,
         #[desc("Don't Override")] dont_override: @bool = false
     ) -> @NULL {
-        $.add
-        (
-            trigger 
-            {
+        $.add ( trigger {
                 OBJ_ID: 3614,
                 START_TIME: start_time,
                 STOP_TIME: stop_time,
@@ -28,7 +24,45 @@ return
                 TARGET: target,
                 IGNORE_TIMEWARP: ignore_timewarp,
                 START_PAUSED: start_paused,
-                DONT_OVERRIDE: dont_override
+                DONT_OVERRIDE: dont_override,
+            }
+        )
+    },
+    time_event: #[desc("An implementation of the time event trigger"), example("time_event(5,1,2g)")]
+    (
+        #[desc("Target Time")] target_time: @number = 0,
+        #[desc("Item ID")] item_id: @item | @number = 0,
+        #[desc("Target")] target: @group = 0g,
+        #[desc("Multi-Activate")] multi_activate: @bool = false
+    ) -> @NULL {
+        $.add ( trigger {
+                OBJ_ID: 3615,
+                TARGET_TIME: target_time,
+                ITEM_ID: item_id,
+                TARGET_ID: target,
+                MULTI_ACTIVATE: multi_activate
+            }
+        )
+    },
+    time_control: #[desc("An implementation of the time control trigger"), example("time_control(1,true)")]
+    (
+        #[desc("Item ID")] item_id: @number = 0,
+        #[desc("Stop")] stop: @bool = false
+    ) -> @NULL {
+        $.add ( trigger {
+                OBJ_ID: 3617,
+                ITEM_ID: item_id,
+                STOP: stop
+            }
+        )
+    },
+    time_warp: #[desc("An implementation of the time warp trigger"), example("PLACEHOLDER TEXT")]
+    (
+        #[desc("Time Modifier")] time_mod: @number = 1
+    ) -> @NULL {
+        $.add ( trigger {
+                OBJ_ID: 1935,
+                TIME_WARP: time_mod
             }
         )
     }

@@ -1,0 +1,40 @@
+constants = "time_constants.spwn"
+triggers = "time_triggers.spwn"
+
+extract constants
+extract triggers
+extract obj_props
+extract time_props
+
+type @time
+
+impl @time
+{
+    create_timer: (start_time: @number = 0, stop_time: @number = 0, time_mod: @number = 1, id: @number | @item = 0, target: @group = 0g, 
+    ignore_timewarp: @bool = false, start_paused: @bool = false, dont_override: @bool = false)
+    {
+        time(start_time, stop_time, time_mod, id, target, ignore_timewarp, start_paused, dont_override)
+    },
+    pause_timer: (id: @number | @item)
+    {
+        time_control(id, true)
+    },
+    resume_timer: (id: @number | @item)
+    {
+        time_control(id, false)
+    },
+    create_event: (target_time: @number = 0, item_id: @number | @item = 0, target: @group = 0g, multi_activate: @bool = false)
+    {
+        time_event(target_time, item_id, target, multi_activate)
+    },
+    time_speed: (multiplier: @number)
+    {
+        time_warp(multiplier)
+    }
+}
+
+return {
+    time_props: time_props,
+    time_triggers: time_triggers,
+    time: @time
+}

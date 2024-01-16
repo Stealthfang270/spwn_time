@@ -1,4 +1,7 @@
 time_triggers = import "time_triggers.spwn";
 extract time_triggers;
 
-time(5,10)
+time()
+time_event()
+time_control()
+time_warp(1)
