@@ -1,0 +1,35 @@
+constants = import "time_constants.spwn";
+extract constants;
+extract obj_props;
+extract time_props;
+
+return 
+{
+    time: #[desc("An implementation of the time trigger"), example("PLACEHOLDER TEXT")]
+    (
+        #[desc("Start Time (Seconds)")] start_time: @number,
+        #[desc("Stop Time (Seconds)")] stop_time: @number,
+        #[desc("Timer Modifier")] time_mod: @number = 1,
+        #[desc("Item ID")] item_id: @item | @number = 0,
+        #[desc("Target")] target: @group = 0g,
+        #[desc("Ignore Timewarp")] ignore_timewarp: @bool = false,
+        #[desc("Start Paused")] start_paused: @bool = false,
+        #[desc("Don't Override")] dont_override: @bool = false
+    ) -> @NULL {
+        $.add
+        (
+            trigger 
+            {
+                OBJ_ID: 3614,
+                START_TIME: start_time,
+                STOP_TIME: stop_time,
+                TIME_MOD: time_mod,
+                ITEM_ID: item_id,
+                TARGET: target,
+                IGNORE_TIMEWARP: ignore_timewarp,
+                START_PAUSED: start_paused,
+                DONT_OVERRIDE: dont_override
+            }
+        )
+    }
+}

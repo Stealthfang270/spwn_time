@@ -1,0 +1,21 @@
+property = (id: @number, pat: @pattern | @type_indicator, name: @string) {
+    return @object_key::{id, pattern: pat, name}
+} //This piece of code is lended from labrosggv's camera library
+
+return 
+{
+    time_props: 
+    {
+        START_TIME: property(467, @number, "START_TIME"),
+        STOP_TIME: property(473, @number, "STOP_TIME"),
+        ITEM_ID: property(80, @number | @item, "ITEM_ID"),
+        TARGET_ID: property(51, @group, "TARGET_ID"),
+        TIME_MOD: property(470, @number, "TIME_MOD"),
+        IGNORE_TIMEWARP: property(469, @bool, "IGNORE_TIMEWARP"),
+        START_PAUSED: property(471, @bool, "START_PAUSED"),
+        DONT_OVERRIDE: property(468, @bool, "DONT_OVERRIDE"),
+        MULTI_ACTIVATE: property(475, @bool, "MULTI_ACTIVATE"),
+        STOP: property(472, @bool, "STOP"),
+        TIME_WARP: property(120, @number, "TIME_WARP")
+    }
+}
