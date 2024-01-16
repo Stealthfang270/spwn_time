@@ -1,5 +1,5 @@
-constants = "time_constants.spwn"
-triggers = "time_triggers.spwn"
+constants = import "time_constants.spwn"
+triggers = import "time_triggers.spwn"
 
 extract constants
 extract triggers
@@ -35,6 +35,6 @@ impl @time
 
 return {
     time_props: time_props,
-    time_triggers: time_triggers,
+    time_triggers: triggers,
     time: @time
 }
